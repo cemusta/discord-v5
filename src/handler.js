@@ -2,19 +2,17 @@
 const { MessageEmbed } = require('discord.js')
 var chance = require('chance').Chance()
 
-const CLIENT_ID = process.env.CLIENT_ID
-
-const printInvite = (msg) => {
+const printInvite = (msg, user) => {
   const embed = new MessageEmbed()
     .setTitle('Invite link for V5 bot 🦇')
-    .setColor(0xff0000)
-    .setURL(`https://discord.com/oauth2/authorize?client_id=${CLIENT_ID}&scope=bot`)
+    .setColor(4079253)
+    .setURL(`https://discord.com/oauth2/authorize?client_id=${user.id}&scope=bot`)
   msg.channel.send(embed)
 }
 
 const printUsage = (msg) => {
   const embed = new MessageEmbed()
-    .setColor(0xffff00)
+    .setColor(855328)
     .setDescription('this is a simple [open source](https://github.com/cemusta/discord-v5) dice roller discord bot for vampire the masquerade v5. Inspired from [Malkav bot](https://ko-fi.com/post/Malkav-Discord-dice-roller-for-Vampire-the-Masque-E1E6QKL0).')
     .addField('Usage', `\`@V5_bot help\` or \`.help\` to display this help message.
     \`@V5_bot help\` or \`.invite\` to displays invite link.
@@ -38,17 +36,17 @@ const handleRolls = (msg, diceCount) => {
   msg.reply(`rolled ${num} ${num > 1 ? 'dices' : 'dice'}, results:\n ${rolls}`)
 }
 
-const handler = (msg) => {
+const handler = (msg, user) => {
   // TODO: implement a better parser & validation & handler here...
   const commands = msg.content.split(' ')
 
-  if (msg.mentions.users.has(CLIENT_ID)) {
+  if (msg.mentions.users.has(user.id)) {
     switch (commands[1]) {
       case 'help':
         printUsage(msg)
         break
       case 'invite':
-        printInvite(msg)
+        printInvite(msg, user)
         break
       default:
         break
@@ -58,7 +56,7 @@ const handler = (msg) => {
   } else if (commands[0] === '.help') {
     printUsage(msg)
   } else if (commands[0] === '.invite') {
-    printUsage(msg)
+    printInvite(msg, user)
   }
 }
 
