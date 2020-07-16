@@ -1,0 +1,56 @@
+{
+  "name": "discord-v5",
+  "version": "1.0.0",
+  "description": "discord bot for vampire the masquerade v5 style dice rolling",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node ./src",
+    "dev": "nodemon ./src",
+    "test": "cross-env SILENT_LOGS=true jest --verbose",
+    "test:logs": "jest",
+    "test:changes": "cross-env SILENT_LOGS=true jest -o",
+    "lint": "eslint .",
+    "coverage": "cross-env SILENT_LOGS=true jest --collectCoverage",
+    "validate": "npm-run-all lint test:changes",
+    "codecov": "codecov"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cemusta/discord-v5"
+  },
+  "keywords": [
+    "discord",
+    "bot",
+    "vampire",
+    "masquerade"
+  ],
+  "author": "Cem Usta",
+  "license": "MIT",
+  "dependencies": {
+    "chance": "^1.1.6",
+    "discord.js": "^12.2.0",
+    "dotenv": "^8.2.0",
+    "readline-sync": "^1.4.10",
+    "winston": "^3.2.1"
+  },
+  "devDependencies": {
+    "codecov": "^3.6.5",
+    "cross-env": "^7.0.2",
+    "eslint": "^6.8.0",
+    "eslint-config-standard": "^14.1.0",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-jest": "^23.13.0",
+    "eslint-plugin-node": "^11.0.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "husky": "^4.2.5",
+    "jest": "^26.0.1",
+    "nodemon": "^2.0.4",
+    "npm-run-all": "^4.1.5"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run validate"
+    }
+  }
+}
