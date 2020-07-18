@@ -15,7 +15,7 @@ const printUsage = (msg) => {
     .setColor(855328)
     .setDescription('this is a simple [open source](https://github.com/cemusta/discord-v5) dice roller discord bot for vampire the masquerade v5. Inspired from [Malkav bot](https://ko-fi.com/post/Malkav-Discord-dice-roller-for-Vampire-the-Masque-E1E6QKL0).')
     .addField('Usage', `\`@V5_bot help\` or \`.help\` to display this help message.
-    \`@V5_bot help\` or \`.invite\` to displays invite link.
+    \`@V5_bot invite\` or \`.invite\` to displays invite link.
     Dice roll commands are listed below:`)
     .addField('Single roll', '`.roll`', true)
     .addField('Multi roll', '`.roll n` (n>1)', true)
