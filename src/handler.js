@@ -38,6 +38,8 @@ const handleRolls = (msg, diceCount) => {
 
 const handler = (msg, user) => {
   // TODO: implement a better parser & validation & handler here...
+  if (msg.author.bot) return // ignore bots
+
   const commands = msg.content.split(' ')
 
   if (msg.mentions.users.has(user.id)) {
